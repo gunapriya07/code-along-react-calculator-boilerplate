@@ -9,15 +9,18 @@ const initialState = {
 const reducer = (state, action) => {
 
   switch (action.type) {
-    case "ADD_INPUT":
-      if("+/-".includes(state.input.slice(-1)) && "+/-".includes(action.payload)){
-        return {
-          ...state,
-          input: state.input.slice(0,-1) + action.payload,
-        };
-      }else{
-        return {...state,input:state.input + action.payload};
-      }
+   case "ADD_INPUT":
+            if (
+                "+/*-".includes(state.input.slice(-1)) &&
+                "+/*-".includes(action.payload)
+            ) {
+                return {
+                    ...state,
+                    input: state.input.slice(0, -1) + action.payload,
+                };
+            } else {
+                return { ...state, input: state.input + action.payload };
+            }
     case "CALCULATE":
       return {...state,input:eval(state.input).toString()};
     case "CLEAR":
